@@ -35,10 +35,10 @@ for n = 1:length(datasets);
 %         bigperf(cond, n) = perf;
 %     end
     lilsplits = cell(4, 1); % get rid of correct target location as a variable
-    lilsplits{1} = [splitcodes{1}; splitcodes{3}];
-    lilsplits{2} = [splitcodes{2}; splitcodes{4}];
-    lilsplits{3} = [splitcodes{5}; splitcodes{7}];
-    lilsplits{4} = [splitcodes{6}; splitcodes{8}];
+    lilsplits{1} = [splitcodes{1}; splitcodes{5}]; % SS - Rule 0
+    lilsplits{2} = [splitcodes{2}; splitcodes{6}]; % SS - Rule 1
+    lilsplits{3} = [splitcodes{3}; splitcodes{7}]; % INS - Rule 0
+    lilsplits{4} = [splitcodes{4}; splitcodes{8}]; % INS - Rule 1
     for cond = 1:length(lilsplits);
         [perf, numtrials] = getperformance(lilsplits{cond});
         bigperf(cond, n) = perf;

@@ -56,10 +56,10 @@ for n = 1:length(tempdata);
 %% code    rule(onright)     tg_loc    type
 %  4050    0                 R         SS   */
 %  4051    1                 R         SS   */
-%  4052    0                 L         SS   */
-%  4053    1                 L         SS   */
-%  4054    0                 R         INS   */
-%  4055    1                 R         INS   */
+%  4054    0                 L         SS   */
+%  4055    1                 L         SS   */
+%  4052    0                 R         INS   */
+%  4053    1                 R         INS   */
 %  4056    0                 L         INS   */
 %  4057    1                 L         INS   */
 
