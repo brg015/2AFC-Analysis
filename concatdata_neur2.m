@@ -88,10 +88,7 @@ alltrigout = [Talltrigout{:}];
 allcodes = vertcat(Tallcodes{:});
 alltimes = vertcat(Talltimes{:});
 
-allh(1:size(Tallh{1}, 1), 1:size(Tallh{1}, 2)) = Tallh{1};
-allh(size(Tallh{1}, 1)+1:size(Tallh{1}, 1)+size(Tallh{2}, 1), 1:size(Tallh{2}, 2)) = Tallh{2};
-allh(size(Tallh{1}, 1)+size(Tallh{2}, 1)+1:end, 1:size(Tallh{3}, 2)) = Tallh{3};
-
+structtemp = struct('status', [], 'starttime', [], 'endtime', [], 'duration', [], 'amplitude', [], 'direction', [], 'peakVelocity', [], 'peakAcceleration', [], 'latency', []);
 counter = 1;
 for n = 1:length(tempdata);
     allh(counter:counter + Trexnumtrials{n} -1, 1:size(Tallh{n}, 2)) = Tallh{n};
@@ -99,9 +96,15 @@ for n = 1:length(tempdata);
     allsacend(counter:counter + Trexnumtrials{n} - 1, 1:size(Tallsacend{n}, 2)) = Tallsacend{n};
     allsacstart(counter:counter + Trexnumtrials{n} - 1, 1:size(Tallsacstart{n}, 2)) = Tallsacstart{n};
     allspk(counter:counter + Trexnumtrials{n} - 1, 1:size(Tallspk{n}, 2)) = Tallspk{n};
+    stmattemp = repmat(structtemp, Trexnumtrials{n}, 1);
+    if n == 1 || n == 2;
+        TsaccadeInfo{n} = [TsaccadeInfo{n} stmattemp stmattemp];
+    end
     counter = counter + Trexnumtrials{n};
 end
 
+saccadeInfo = vertcat(TsaccadeInfo{:});
+
 rexname = 'S18R2A0_full_Sp2';
-savefolder = '/Users/zacharyabzug/Desktop/zackdata/processed/Shuffles/';
+savefolder = '/Users/zmabzug/Desktop/zackdata/processed/Shuffles/';
 save(strcat(savefolder, rexname))
