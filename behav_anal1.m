@@ -43,8 +43,11 @@ for n = 1:length(datasets);
         [perf, numtrials] = getperformance(lilsplits{cond});
         bigperf(cond, n) = perf;
     end
+    %% RULE 0 BIAS
     rule0bias(n) = getrulebias(truncodes);
+    %% RIGHT SIDE BIAS
     sideRbias(n) = getsidebias(truncodes);
+    %% LEFT SIDE BIAS
     sideRbias_cont(n) = getsidebias_cont(truncodes);
 end
 
